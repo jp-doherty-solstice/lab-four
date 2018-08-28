@@ -40,7 +40,10 @@ public class QuoteService {
 
     public void loadQuotes() throws IOException {
         Quote[] quotesArray = extractQuotesFromJson();
-        quoteRepository.saveAll(Arrays.asList(quotesArray));
+        for (int i = 0; i < 60; i++) {
+            quoteRepository.save(quotesArray[i]);
+        }
+        // quoteRepository.saveAll(Arrays.asList(quotesArray));
     }
 
     private Quote[] extractQuotesFromJson() throws IOException {
